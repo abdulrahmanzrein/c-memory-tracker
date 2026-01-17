@@ -70,14 +70,19 @@ void  mt_free(void *ptr);
 void  mt_report(void);
 ```
 
-Macro behavior
-Including memtrack.h replaces malloc and free in the current source file:
+## Macro behavior
 
+Including `memtrack.h` replaces `malloc` and `free` in the current source file:
+
+```c
 #define malloc(x) mt_malloc((x), __FILE__, __LINE__)
 #define free(x)   mt_free((x))
+
+
 Macro replacement can be disabled by defining MT_DISABLE_MACROS before including the header, or by compiling with -DMT_DISABLE_MACROS.
 
 Example
+
 #include "memtrack.h"
 
 int main(void)
@@ -90,6 +95,8 @@ int main(void)
 
     return 0;
 }
+
+
 Example output
 ========================================
 [memtrack] MEMORY LEAK REPORT
@@ -99,6 +106,7 @@ Leak #1: ptr=0x55c9e3c1c2a0 size=4 allocated at main.c:6
 Leaked blocks: 1
 Leaked bytes : 4
 ========================================
+
 Tests
 A basic test is provided in tests/test_basic.c.
 
