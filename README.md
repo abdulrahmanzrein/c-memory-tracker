@@ -68,6 +68,8 @@ This mirrors the behavior of common memory debugging tools.
 void *mt_malloc(size_t size, const char *file, int line);
 void  mt_free(void *ptr);
 void  mt_report(void);
+```
+
 Macro behavior
 Including memtrack.h replaces malloc and free in the current source file:
 
