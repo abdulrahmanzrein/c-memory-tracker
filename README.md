@@ -77,12 +77,14 @@ Including `memtrack.h` replaces `malloc` and `free` in the current source file:
 ```c
 #define malloc(x) mt_malloc((x), __FILE__, __LINE__)
 #define free(x)   mt_free((x))
+```
 
 
 Macro replacement can be disabled by defining MT_DISABLE_MACROS before including the header, or by compiling with -DMT_DISABLE_MACROS.
 
-Example
+## Example
 
+```c
 #include "memtrack.h"
 
 int main(void)
@@ -95,9 +97,12 @@ int main(void)
 
     return 0;
 }
+```
 
 
-Example output
+## Example output
+
+```text
 ========================================
 [memtrack] MEMORY LEAK REPORT
 ----------------------------------------
@@ -106,12 +111,14 @@ Leak #1: ptr=0x55c9e3c1c2a0 size=4 allocated at main.c:6
 Leaked blocks: 1
 Leaked bytes : 4
 ========================================
+```
 
-Tests
+
+## Tests
 A basic test is provided in tests/test_basic.c.
 
 The test allocates three blocks, frees two of them, and intentionally leaks one to demonstrate the reporting behavior.
 
-Purpose
+## Purpose
 This project was built as a learning exercise to improve understanding of heap allocation, ownership, and debugging in C. It is intended for educational and portfolio use.
 
